@@ -1,4 +1,19 @@
-<?php 
-	$link=mysqli_connect("zerone-addon-8516-101-mariadb.zerone-4070-8516.svc.cluster.local","root","1wtjruZNz8") or die("Couldn't connet to SQL server");
-	mysqli_select_db("ecommerce",$link) or die("Couldn'ttt select DB");
+<?php
+$servername = "mysql-132595-0.cloudclusters.net";
+$username = "admin";
+$password = "BTfiigJs";
+$database = "ecommerce";
+
+// Create a connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+echo "Connected successfully";
+
+// Close the connection
+$conn->close();
 ?>

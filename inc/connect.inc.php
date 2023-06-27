@@ -1,8 +1,8 @@
 <?php
-$servername = "mysql-132595-0.cloudclusters.net";
-$username = "admin";
-$password = "BTfiigJs";
-$database = "ecommerce";
+$servername = "172.17.0.3";
+$username = "root";
+$password = "MyR00tP@ssw0rd";
+$database = "my_database";
 
 // Create a connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -15,5 +15,5 @@ if ($conn->connect_error) {
 echo "Connected successfully";
 
 // Close the connection
-$conn->close();
+//$conn->close();
 ?>

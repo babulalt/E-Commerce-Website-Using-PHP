@@ -11,7 +11,7 @@ else {
 
 if (isset($_POST['login'])) {
 	if (isset($_POST['email']) && isset($_POST['password'])) {
-		$user_login = mysqli_real_escape_string($_POST['email']);
+		$user_login = mysqli_real_escape_string($conn,$_POST['email']);
 		$user_login = mb_convert_case($user_login, MB_CASE_LOWER, "UTF-8");	
 		$password_login = mysqli_real_escape_string($conn,$_POST['password']);		
 		$num = 0;

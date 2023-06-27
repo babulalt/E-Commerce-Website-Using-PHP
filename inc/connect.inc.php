@@ -14,7 +14,7 @@ function loadEnv()
 }
 
 // Load the environment variables
-loadEnv();
+// loadEnv();
 $dbHost = getenv('DB_HOST');
 $dbUsername = getenv('DB_USERNAME');
 $dbPassword = getenv('DB_PASSWORD');

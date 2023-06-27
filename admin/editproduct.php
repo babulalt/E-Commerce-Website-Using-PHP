@@ -10,19 +10,19 @@ if (!isset($_SESSION['admin_login'])) {
 else {
 	if (isset($_REQUEST['epid'])) {
 	
-		$epid = mysql_real_escape_string($_REQUEST['epid']);
+		$epid = mysqli_real_escape_string($conn,$_REQUEST['epid']);
 	}else {
 		header('location: index.php');
 	}
 	$user = $_SESSION['admin_login'];
-	$result = mysql_query("SELECT * FROM admin WHERE id='$user'");
-	$get_user_email = mysql_fetch_assoc($result);
+	$result = mysqli_query($conn,"SELECT * FROM admin WHERE id='$user'");
+	$get_user_email = mysqli_fetch_assoc($result);
 		$uname_db = $get_user_email['firstName'];
 
 }
-$getposts = mysql_query("SELECT * FROM products WHERE id ='$epid'") or die(mysql_error());
-	if (mysql_num_rows($getposts)) {
-		$row = mysql_fetch_assoc($getposts);
+$getposts = mysqli_query($conn,"SELECT * FROM products WHERE id ='$epid'") or die(mysql_error());
+	if (mysqli_num_rows($getposts)) {
+		$row = mysqli_fetch_assoc($getposts);
 		$id = $row['id'];
 		$pName = $row['pName'];
 		$price = $row['price'];
@@ -50,7 +50,7 @@ if (isset($_POST['updatepro'])) {
 	//triming name
 	$_POST['pname'] = trim($_POST['pname']);
 
-	if($result = mysql_query("UPDATE products SET pName='$_POST[pname]',price='$_POST[price]',description='$_POST[descri]',available='$_POST[available]',category='$_POST[category]',type='$_POST[type]',item='$_POST[item]',pCode='$_POST[code]' WHERE id='$epid'")){
+	if($result = mysqli_query($conn,"UPDATE products SET pName='$_POST[pname]',price='$_POST[price]',description='$_POST[descri]',available='$_POST[available]',category='$_POST[category]',type='$_POST[type]',item='$_POST[item]',pCode='$_POST[code]' WHERE id='$epid'")){
 		header("Location: editproduct.php?epid=".$epid."");
 
 	}else {
@@ -111,12 +111,12 @@ if (((@$_FILES['profilepic']['type']=='image/jpeg') || (@$_FILES['profilepic']['
 
 if (isset($_POST['delprod'])) {
 //triming name
-	$getposts1 = mysql_query("SELECT pid FROM orders WHERE pid='$epid'") or die(mysql_error());
-					if ($ttl = mysql_num_rows($getposts1)) {
+	$getposts1 = mysqli_query($conn,"SELECT pid FROM orders WHERE pid='$epid'") or die(mysql_error());
+					if ($ttl = mysqli_num_rows($getposts1)) {
 						$error_message = "You can not delete this product.<br>Someone ordered this.";
 					}
 					else {
-						if(mysql_query("DELETE FROM products WHERE id='$epid'")){
+						if(mysqil_query($conn,"DELETE FROM products WHERE id='$epid'")){
 						header('location: orders.php');
 						}
 					}

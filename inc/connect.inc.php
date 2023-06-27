@@ -1,17 +1,17 @@
 <?php
-function loadEnv()
-{
-    $lines = file(__DIR__ . '/../.env');
-    foreach ($lines as $line) {
-        $line = trim($line);
-        if ($line && strpos($line, '=') !== false) {
-            [$key, $value] = explode('=', $line, 2);
-            $_ENV[$key] = $value;
-            $_SERVER[$key] = $value;
-            putenv($key."=".$value);
-        }
-    }
-}
+// function loadEnv()
+// {
+//     $lines = file(__DIR__ . '/../.env');
+//     foreach ($lines as $line) {
+//         $line = trim($line);
+//         if ($line && strpos($line, '=') !== false) {
+//             [$key, $value] = explode('=', $line, 2);
+//             $_ENV[$key] = $value;
+//             $_SERVER[$key] = $value;
+//             putenv($key."=".$value);
+//         }
+//     }
+// }
 
 // Load the environment variables
 // loadEnv();
